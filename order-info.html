@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>标题</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+		<meta name="format-detection" content="telephone=no,email=no" />
+		<meta name="keywords" content="" />
+		<link rel="stylesheet" type="text/css" href="static/theme2/css/global.css" />
+		<link rel="stylesheet" type="text/css" href="static/theme2/css/order-info.css" />
+		<script src="static/theme2/js/jquery-2.2.4.min.js" type="text/javascript" charset="utf-8"></script>
+		
+		<script src="static/theme2/js/fastclick.min.js" type="text/javascript" charset="utf-8"></script>
+
+		<script type="text/javascript">
+			$(function() {
+				FastClick.attach(document.body);
+			});
+		</script>
+	</head>
+
+	<body>
+		<header class="body_head">
+			<a href="javascript:;" onclick="history.go(-1)" class="go_back"></a>
+			<h3>订单信息</h3>
+		</header>
+		<section class="form_main">
+			<form action="" method="post">
+				
+				
+					<div class="input_floor">
+						<span class="floor_name">所在地区</span>
+						<a href="javascript:;" class="floor_box choice_address" id="selectRegionBtn">请选择收货地区</a>
+						<input type="hidden" name="" id="consRegion" />
+					</div>
+					<div class="input_floor" data-a="a">
+						<span class="floor_name">详细地址</span>
+						<div class="floor_box">
+							<input type="text" name="" id="consAddress" value="" placeholder="请填写街道详细地址" autocomplete="off" maxlength="50" class="control_input" />
+							<i class="icon_empty"></i>
+						</div>
+					</div>
+				
+				
+				
+			</form>
+		</section>
+
+		
+		<script src="static/theme2/js/regionSelect.jq.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" href="static/theme2/css/regionSelect.css" />
+		<script type="text/javascript">
+			
+			$("#selectRegionBtn").RegionList({
+
+				defaultRegion:[["10133","1013307","101330702"],["浙江","金华市","婺城区"]],	//传入默认地址
+				Storage: true, //是否启用localStroage
+				valueStore: $("#consRegion"),//传入隐藏的input框jquery对象，方便设置其值
+
+				resultCall: function(data) {
+					console.log(data);
+
+				}//data 为最终返回的结果(结构同dafaultRegion)，resuleCall为用返回结果做的一些处理，而对于$("#selectRegionBtn")的内容及$("#consRegion")的值已经在插件的getResult及defaultRegion中进行过处理；
+				
+			});
+
+			//console.log($("#consRegion").val());
+			
+
+			
+		</script>
+	</body>
+
+</html>
